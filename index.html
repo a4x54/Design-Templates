@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Template Showcase</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap">
+    <style>
+        :root {
+            /* Home Theme (Default) */
+            --primary-color: #2c3e50;
+            --primary-light: #ecf0f1;
+            --primary-dark: #1a2530;
+            --secondary-color: #3498db;
+            --background-color: #f8f9fa;
+            --text-color: #2c3e50;
+            --text-light: #7f8c8d;
+            --card-bg: #ffffff;
+            --card-shadow: rgba(44, 62, 80, 0.1);
+            --nav-bg: #ffffff;
+            --button-bg: #2c3e50;
+            --button-text: #ffffff;
+            --transition-slow: 0.5s ease;
+            --transition-fast: 0.3s ease;
+            --gradient: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            
+            /* Navigation color scheme (constant) */
+            --nav-primary: #2c3e50;
+            --nav-primary-light: #34495e;
+            --nav-accent: #3498db;
+        }
+
+        /* Simple Theme */
+        [data-theme="simple"] {
+            --primary-color: #3498db;
+            --primary-light: #aed6f1;
+            --primary-dark: #21618c;
+            --secondary-color: #2980b9;
+            --background-color: #f5f7fa;
+            --text-color: #2c3e50;
+            --text-light: #7f8c8d;
+            --card-bg: #ffffff;
+            --card-shadow: rgba(52, 152, 219, 0.15);
+            --nav-bg: #ffffff;
+            --button-bg: #3498db;
+            --button-text: #ffffff;
+            --gradient: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+        }
+
+        /* Attractive Theme */
+        [data-theme="attractive"] {
+            --primary-color: #e74c3c;
+            --primary-light: #fadbd8;
+            --primary-dark: #922b21;
+            --secondary-color: #c0392b;
+            --background-color: #ffedec;
+            --text-color: #2c3e50;
+            --text-light: #7f8c8d;
+            --card-bg: #ffffff;
+            --card-shadow: rgba(231, 76, 60, 0.15);
+            --nav-bg: #ffffff;
+            --button-bg: #e74c3c;
+            --button-text: #ffffff;
+            --gradient: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+        }
+
+        /* Elegant Theme */
+        [data-theme="elegant"] {
+            --primary-color: #9b59b6;
+            --primary-light: #e8daef;
+            --primary-dark: #6c3483;
+            --secondary-color: #8e44ad;
+            --background-color: #f8f9fa;
+            --text-color: #34495e;
+            --text-light: #7f8c8d;
+            --card-bg: #ffffff;
+            --card-shadow: rgba(155, 89, 182, 0.12);
+            --nav-bg: #ffffff;
+            --button-bg: #9b59b6;
+            --button-text: #ffffff;
+            --gradient: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color var(--transition-slow), color var(--transition-slow), transform var(--transition-fast), box-shadow var(--transition-fast);
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--nav-bg);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--nav-primary);
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--nav-accent);
+            transition: transform 0.5s ease;
+        }
+
+        .logo:hover i {
+            transform: rotate(15deg);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--nav-primary);
+            font-weight: 600;
+            position: relative;
+            padding: 10px 20px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all var(--transition-fast);
+            background: #f8f9fa;
+        }
+
+        .nav-link i {
+            font-size: 1.1rem;
+        }
+
+        .nav-link:hover {
+            background: var(--nav-primary-light);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-link.active {
+            background: var(--nav-primary);
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-link.active i {
+            color: white;
+        }
+
+        .nav-link.home.active, .nav-link.home:hover {
+            background: #2c3e50;
+        }
+
+        .nav-link.simple.active, .nav-link.simple:hover {
+            background: #3498db;
+        }
+
+        .nav-link.attractive.active, .nav-link.attractive:hover {
+            background: #e74c3c;
+        }
+
+        .nav-link.elegant.active, .nav-link.elegant:hover {
+            background: #9b59b6;
+        }
+
+        /* Page Styles */
+        .page {
+            display: none;
+            opacity: 0;
+            animation: fadeIn 0.5s ease forwards;
+            flex: 1;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 80px 0 60px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: var(--text-color);
+            line-height: 1.8;
+        }
+
+        .style-cards {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .style-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            width: 300px;
+            box-shadow: 0 10px 30px var(--card-shadow);
+            transition: transform var(--transition-fast);
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .style-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-color);
+        }
+
+        .style-card.simple:hover {
+            border-color: #3498db;
+        }
+
+        .style-card.attractive:hover {
+            border-color: #e74c3c;
+        }
+
+        .style-card.elegant:hover {
+            border-color: #9b59b6;
+        }
+
+        .style-card-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .style-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .style-card:hover .style-card-img img {
+            transform: scale(1.05);
+        }
+
+        .style-card-content {
+            padding: 20px;
+        }
+
+        .style-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .style-card.simple h3 {
+            color: #3498db;
+        }
+
+        .style-card.attractive h3 {
+            color: #e74c3c;
+        }
+
+        .style-card.elegant h3 {
+            color: #9b59b6;
+        }
+
+        .style-card p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .card-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all var(--transition-fast);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-btn.simple {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+        }
+
+        .card-btn.attractive {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+        }
+
+        .card-btn.elegant {
+            background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+        }
+
+        .card-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Carousel Section */
+        .carousels-container {
+            padding: 40px 0 80px;
+        }
+
+        .carousel-section {
+            margin-bottom: 80px;
+        }
+
+        .carousel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .carousel-title {
+            font-size: 2.2rem;
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+        }
+
+        .back-btn {
+            padding: 10px 20px;
+            background-color: var(--primary-light);
+            color: var(--primary-dark);
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all var(--transition-fast);
+        }
+
+        .back-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateX(-5px);
+        }
+
+        .carousel {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px var(--card-shadow);
+            background-color: var(--card-bg);
+            padding: 30px 0;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .carousel-image-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .carousel-image {
+            max-width: 100%;
+            max-height: 70vh;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            transition: transform var(--transition-fast);
+        }
+
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            gap: 15px;
+        }
+
+        .carousel-toggle {
+            padding: 8px 16px;
+            background-color: var(--primary-light);
+            color: var(--primary-dark);
+            border: none;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all var(--transition-fast);
+        }
+
+        .carousel-toggle:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .carousel-speed {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--primary-light);
+            padding: 5px 15px;
+            border-radius: 20px;
+            color: var(--primary-dark);
+        }
+
+        .carousel-speed button {
+            background: none;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+            transition: all var(--transition-fast);
+        }
+
+        .carousel-speed button:hover {
+            color: var(--primary-color);
+            transform: scale(1.2);
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: background-color var(--transition-fast), transform var(--transition-fast);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .carousel-btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-btn.prev {
+            left: 15px;
+        }
+
+        .carousel-btn.next {
+            right: 15px;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            margin-top: 25px;
+            gap: 10px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--primary-light);
+            cursor: pointer;
+            transition: background-color var(--transition-fast), transform var(--transition-fast);
+        }
+
+        .dot.active {
+            background-color: var(--primary-color);
+            transform: scale(1.2);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--nav-bg);
+            padding: 40px 0;
+            text-align: center;
+            box-shadow: 0 -2px 20px rgba(0, 0, 0, 0.08);
+            margin-top: auto;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: all var(--transition-fast);
+        }
+
+        .social-link:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-slide-up {
+            animation: slideUp 0.5s ease forwards;
+        }
+
+        /* Responsive design */
+        @media (max-width: 992px) {
+            .style-cards {
+                gap: 20px;
+            }
+            
+            .style-card {
+                width: 280px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .nav-links {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .carousel-title {
+                font-size: 1.8rem;
+            }
+            
+            .style-card {
+                width: 100%;
+                max-width: 400px;
+            }
+            
+            .carousel-image {
+                max-height: 50vh;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 60px 0 40px;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .carousel-title {
+                font-size: 1.5rem;
+            }
+            
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            
+            .nav-links {
+                gap: 10px;
+            }
+            
+            .nav-link {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+            
+            .carousel-image {
+                max-height: 40vh;
+            }
+        }
+    </style>
+</head>
+<body data-theme="home">
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo" onclick="showPage('home', 'home')">
+                <i class="fas fa-palette"></i>
+                <span>Design Showcase</span>
+            </a>
+            <div class="nav-links">
+                <a href="#" class="nav-link home active" onclick="showPage('home', 'home')">
+                    <i class="fas fa-home"></i> Home
+                </a>
+                <a href="#" class="nav-link simple" onclick="showPage('simple', 'simple')">
+                    <i class="fas fa-minimize"></i> Simple
+                </a>
+                <a href="#" class="nav-link attractive" onclick="showPage('attractive', 'attractive')">
+                    <i class="fas fa-fire"></i> Attractive
+                </a>
+                <a href="#" class="nav-link elegant" onclick="showPage('elegant', 'elegant')">
+                    <i class="fas fa-gem"></i> Elegant
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Home Page -->
+    <div id="home-page" class="page active">
+        <section class="hero">
+            <div class="container">
+                <h1 class="animate-slide-up">Instagram Template Designs</h1>
+                <p class="animate-slide-up">I have created three carousel models of Instagram-oriented templates. These three carousels represent different styles—simple, attractive, and elegant—designed to satisfy all tastes.</p>
+                
+                <div class="style-cards">
+                    <div class="style-card simple animate-slide-up" onclick="showPage('simple', 'simple')" style="animation-delay: 0.2s;">
+                        <div class="style-card-img">
+                            <img src="images/Simple.png" alt="Simple Style">
+                        </div>
+                        <div class="style-card-content">
+                            <h3>Simple Style</h3>
+                            <p>Clean, minimal designs that focus on content and readability with a professional aesthetic.</p>
+                            <a href="#" class="card-btn simple" onclick="showPage('simple', 'simple')">View Templates</a>
+                        </div>
+                    </div>
+                    
+                    <div class="style-card attractive animate-slide-up" onclick="showPage('attractive', 'attractive')" style="animation-delay: 0.4s;">
+                        <div class="style-card-img">
+                            <img src="images/Attractive.png" alt="Attractive Style">
+                        </div>
+                        <div class="style-card-content">
+                            <h3>Attractive Style</h3>
+                            <p>Eye-catching designs with bold colors and dynamic layouts that grab attention.</p>
+                            <a href="#" class="card-btn attractive" onclick="showPage('attractive', 'attractive')">View Templates</a>
+                        </div>
+                    </div>
+                    
+                    <div class="style-card elegant animate-slide-up" onclick="showPage('elegant', 'elegant')" style="animation-delay: 0.6s;">
+                        <div class="style-card-img">
+                            <img src="images/Elegant.png" alt="Elegant Style">
+                        </div>
+                        <div class="style-card-content">
+                            <h3>Elegant Style</h3>
+                            <p>Sophisticated designs with refined typography and luxurious elements for premium brands.</p>
+                            <a href="#" class="card-btn elegant" onclick="showPage('elegant', 'elegant')">View Templates</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Simple Style Page -->
+    <div id="simple-page" class="page">
+        <section class="carousels-container">
+            <div class="container">
+                <div class="carousel-header">
+                    <h2 class="carousel-title">Simple Style Templates</h2>
+                    <button class="back-btn" onclick="showPage('home', 'home')">
+                        <i class="fas fa-arrow-left"></i> Back to Home
+                    </button>
+                </div>
+                <div class="carousel simple-carousel">
+                    <div class="carousel-track">
+                        <div class="carousel-slide">
+                            <div class="carousel-image-container">
+                                <img src="images/A1.png" alt="Simple Design 1" class="carousel-image">
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="carousel-image-container">
+                                <img src="images/A2.png" alt="Simple Design 2" class="carousel-image">
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="carousel-image-container">
+                                <img src="images/A3.png" alt="Simple Design 3" class="carousel-image">
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="carousel-image-container">
+                                <img src="images/A4.png" alt="Simple Design 4" class="carousel-image">
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="carousel-image-container">
+                                <img src="images/A5.png" alt="Simple Design 5" class="carousel-image">
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-btn prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="carousel-btn next">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <div class="carousel-controls">
+                        <button class="carousel-toggle" id="toggle-simple-autoplay">
+                            <i class="fas fa-pause"></i> Pause
+                        </button>
+                        <div class="carousel-speed">
+                            <button id="decrease-simple-speed">-</button>
+                            <span id="simple-speed-display">5s</span>
+                            <button id="increase-simple-speed">+</button>
+                        </div>
+                    </div>
+                    <div class="carousel-dots">
+                        <div class="dot active"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Attractive Style Page -->
+    <div id="attractive-page" class="page">
+        <section class="carousels-container">
+            <div class="container">
+                <div class="carousel-header">
+                    <h2 class="carousel-title">Attractive Style Templates</h2>
+                    <button class="back-btn" onclick="showPage('home', 'home')">
+                        <i class="fas fa-arrow-left"></i> Back to Home
+                    </button>
+                </div>
+                <div class="carousel attractive-carousel">
+                    <div class="carousel-track">
+                        <div class="carousel-slide">
+                            <div class="carousel-image-container">
+                                <img src="images/B1.png" alt="Attractive Design 1" class="carousel-image">
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="carousel-image-container">
+                                <img src="images/B2.png" alt="Attractive Design 2" class="carousel-image">
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="carousel-image-container">
+                                <img src="images/B3.png" alt="Attractive Design 3" class="carousel-image">
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="carousel-image-container">
+                                <img src="images/B4.png" alt="Attractive Design 4" class="carousel-image">
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="carousel-image-container">
+                                <img src="images/B5.png" alt="Attractive Design 5" class="carousel-image">
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-btn prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="carousel-btn next">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <div class="carousel-controls">
+                        <button class="carousel-toggle" id="toggle-attractive-autoplay">
+                            <i class="fas fa-pause"></i> Pause
+                        </button>
+                        <div class="carousel-speed">
+                            <button id="decrease-attractive-speed">-</button>
+                            <span id="attractive-speed-display">5s</span>
+                            <button id="increase-attractive-speed">+</button>
+                        </div>
+                    </div>
+                    <div class="carousel-dots">
+                        <div class="dot active"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Elegant Style Page -->
+    <div id="elegant-page" class="page">
+        <section class="carousels-container">
+            <div class="container">
+                <div class="carousel-header">
+                    <h2 class="carousel-title">Elegant Style Templates</h2>
+                    <button class="back-btn" onclick="showPage('home', 'home')">
+                        <i class="fas fa-arrow-left"></i> Back to Home
+                    </button>
+                </div>
+                <div class="carousel elegant-carousel">
+                    <div class="carousel-track">
+                        <div class="carousel-slide">
+                            <div class="carousel-image-container">
+                                <img src="images/C1.png" alt="Elegant Design 1" class="carousel-image">
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="carousel-image-container">
+                                <img src="images/C2.png" alt="Elegant Design 2" class="carousel-image">
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="carousel-image-container">
+                                <img src="images/C3.png" alt="Elegant Design 3" class="carousel-image">
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="carousel-image-container">
+                                <img src="images/C4.png" alt="Elegant Design 4" class="carousel-image">
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="carousel-image-container">
+                                <img src="images/C5.png" alt="Elegant Design 5" class="carousel-image">
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-btn prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="carousel-btn next">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <div class="carousel-controls">
+                        <button class="carousel-toggle" id="toggle-elegant-autoplay">
+                            <i class="fas fa-pause"></i> Pause
+                        </button>
+                        <div class="carousel-speed">
+                            <button id="decrease-elegant-speed">-</button>
+                            <span id="elegant-speed-display">5s</span>
+                            <button id="increase-elegant-speed">+</button>
+                        </div>
+                    </div>
+                    <div class="carousel-dots">
+                        <div class="dot active"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>© 2025 Design Template Showcase </p>
+            </div>
+        </div>
+    </footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize carousels
+        initializeCarousels();
+        
+        // Set the initial theme to home
+        changeTheme('home');
+    });
+    
+    // Theme switching functionality
+    function changeTheme(theme) {
+        const body = document.body;
+        
+        // Update body data-theme attribute
+        body.setAttribute('data-theme', theme);
+        
+        // Update active navigation link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('active');
+        });
+        
+        document.querySelector(`.nav-link.${theme}`).classList.add('active');
+    }
+    
+    // Page navigation functionality
+    function showPage(pageId, theme) {
+        // Change theme if specified
+        if (theme) {
+            changeTheme(theme);
+        }
+        
+        // Hide all pages
+        document.querySelectorAll('.page').forEach(page => {
+            page.classList.remove('active');
+        });
+        
+        // Show the selected page
+        document.getElementById(`${pageId}-page`).classList.add('active');
+        
+        // Scroll to top
+        window.scrollTo(0, 0);
+        
+        // Reinitialize carousels for the new page
+        setTimeout(() => {
+            initializeCarousels();
+        }, 50);
+    }
+    
+    // Carousel initialization with proper event delegation
+    function initializeCarousels() {
+        const carousels = document.querySelectorAll('.carousel');
+        
+        carousels.forEach(carousel => {
+            // Only initialize if not already initialized
+            if (carousel.getAttribute('data-initialized') !== 'true') {
+                const track = carousel.querySelector('.carousel-track');
+                const slides = carousel.querySelectorAll('.carousel-slide');
+                const prevBtn = carousel.querySelector('.carousel-btn.prev');
+                const nextBtn = carousel.querySelector('.carousel-btn.next');
+                const dots = carousel.querySelectorAll('.dot');
+                const toggleBtn = carousel.querySelector('.carousel-toggle');
+                const speedDisplay = carousel.querySelector('.carousel-speed span');
+                
+                let currentIndex = 0;
+                const slideCount = slides.length;
+                let autoPlayInterval = 5000; // 5 seconds
+                let autoPlay = true;
+                let intervalId;
+                
+                // Function to update carousel position
+                function updateCarousel() {
+                    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                    
+                    // Update dots
+                    dots.forEach((dot, index) => {
+                        if (index === currentIndex) {
+                            dot.classList.add('active');
+                        } else {
+                            dot.classList.remove('active');
+                        }
+                    });
+                }
+                
+                // Function to start autoplay
+                function startAutoPlay() {
+                    if (autoPlay) {
+                        intervalId = setInterval(() => {
+                            currentIndex = (currentIndex + 1) % slideCount;
+                            updateCarousel();
+                        }, autoPlayInterval);
+                        
+                        if (toggleBtn) {
+                            toggleBtn.innerHTML = '<i class="fas fa-pause"></i> Pause';
+                        }
+                    }
+                }
+                
+                // Function to stop autoplay
+                function stopAutoPlay() {
+                    clearInterval(intervalId);
+                    if (toggleBtn) {
+                        toggleBtn.innerHTML = '<i class="fas fa-play"></i> Play';
+                    }
+                }
+                
+                // Next slide
+                nextBtn.addEventListener('click', () => {
+                    currentIndex = (currentIndex + 1) % slideCount;
+                    updateCarousel();
+                    // Restart autoplay timer
+                    if (autoPlay) {
+                        stopAutoPlay();
+                        startAutoPlay();
+                    }
+                });
+                
+                // Previous slide
+                prevBtn.addEventListener('click', () => {
+                    currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+                    updateCarousel();
+                    // Restart autoplay timer
+                    if (autoPlay) {
+                        stopAutoPlay();
+                        startAutoPlay();
+                    }
+                });
+                
+                // Dot navigation
+                dots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => {
+                        currentIndex = index;
+                        updateCarousel();
+                        // Restart autoplay timer
+                        if (autoPlay) {
+                            stopAutoPlay();
+                            startAutoPlay();
+                        }
+                    });
+                });
+                
+                // Toggle autoplay
+                if (toggleBtn) {
+                    toggleBtn.addEventListener('click', () => {
+                        autoPlay = !autoPlay;
+                        if (autoPlay) {
+                            startAutoPlay();
+                        } else {
+                            stopAutoPlay();
+                        }
+                    });
+                }
+                
+                // Speed controls with event delegation
+                carousel.addEventListener('click', (e) => {
+                    // Decrease speed (make transitions faster)
+                    if (e.target.id.includes('decrease') || e.target.parentElement.id.includes('decrease')) {
+                        autoPlayInterval = Math.max(1000, autoPlayInterval - 1000);
+                        if (speedDisplay) {
+                            speedDisplay.textContent = `${autoPlayInterval/1000}s`;
+                        }
+                        
+                        if (autoPlay) {
+                            stopAutoPlay();
+                            startAutoPlay();
+                        }
+                    }
+                    
+                    // Increase speed (make transitions slower)
+                    if (e.target.id.includes('increase') || e.target.parentElement.id.includes('increase')) {
+                        autoPlayInterval = Math.min(10000, autoPlayInterval + 1000);
+                        if (speedDisplay) {
+                            speedDisplay.textContent = `${autoPlayInterval/1000}s`;
+                        }
+                        
+                        if (autoPlay) {
+                            stopAutoPlay();
+                            startAutoPlay();
+                        }
+                    }
+                });
+                
+                // Pause on hover
+                carousel.addEventListener('mouseenter', () => {
+                    if (autoPlay) {
+                        stopAutoPlay();
+                    }
+                });
+                
+                carousel.addEventListener('mouseleave', () => {
+                    if (autoPlay) {
+                        startAutoPlay();
+                    }
+                });
+                
+                // Start autoplay
+                startAutoPlay();
+                
+                // Mark as initialized
+                carousel.setAttribute('data-initialized', 'true');
+            }
+        });
+    }
+</script>
+</body>
+</html>
